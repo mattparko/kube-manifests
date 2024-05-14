@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pacman
+    app.kubernetes.io/component: pacman
+    app.kubernetes.io/instance: pacman
+    app.kubernetes.io/name: pacman
+    app.kubernetes.io/part-of: pacman
+    app.openshift.io/runtime: nodejs
+  name: pacman
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: pacman
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: pacman
+        deployment: pacman
+    spec:
+      containers:
+      - image: quay.io/parko/pacman:1.0.1
+        imagePullPolicy: IfNotPresent
+        name: pacman
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
