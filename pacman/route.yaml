@@ -11,10 +11,7 @@ metadata:
   name: pacman
 spec:
   port:
-    targetPort: 8080-tcp
-  tls:
-    insecureEdgeTerminationPolicy: Redirect
-    termination: edge
+    targetPort: 8080
   to:
     kind: Service
     name: pacman
