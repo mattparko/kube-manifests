@@ -4,7 +4,6 @@ metadata:
   labels:
     app: pacman
     app.kubernetes.io/component: pacman
-    app.kubernetes.io/instance: prod-pacman
     app.kubernetes.io/name: pacman
     app.kubernetes.io/part-of: pacman
     app.openshift.io/runtime: nodejs
