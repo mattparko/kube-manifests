@@ -28,7 +28,7 @@ spec:
         deployment: pacman
     spec:
       containers:
-      - image: quay.io/parko/pacman:1.0.2
+      - image: quay.io/parko/pacman:1.0.3
         imagePullPolicy: IfNotPresent
         name: pacman
         ports:
